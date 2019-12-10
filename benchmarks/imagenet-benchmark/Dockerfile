@@ -6,7 +6,7 @@ FROM ubuntu:18.04
 
 # Install just the Python runtime (no dev)
 RUN apt-get update && apt-get install -y python3-dev python3-pip
-#RUN apk add --no-cache python3 py3-pip ca-certificates 
+#RUN apk add --no-cache python3 py3-pip ca-certificates
 # Expose any ports the app is expecting in the environment
 # ENV PORT 8001
 # EXPOSE $PORT
@@ -21,6 +21,6 @@ WORKDIR /app
 
 # Add the code as the last Docker layer because it changes the most
 ADD ./app  /app
+RUN mkdir logs
 # Run the service
-CMD [ "python3", "main.py", "-a", "alexnet", "-b", "8", "--epochs", "1", "--lr", "0.01", "." , "--perf-num-show", "30", "--perf-sort", "cumulative" ]
-#CMD [ "python3", "main.py", "-a alexnet", "-b 8", "--epochs 1", "--lr 0.01", ".", "--perf-num-show 30", "--perf-sort cumulative" ] 
+CMD python3 main.py -a alexnet -b 8 --epochs 1 --lr 0.01 . > /logs/perf.log
