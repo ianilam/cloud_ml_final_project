@@ -1,4 +1,4 @@
-uses cProfile and outputs stats into "/logs/mnist_profile"
+uses cProfile and outputs stats into "/logs"
 
 to look at the stats
 
