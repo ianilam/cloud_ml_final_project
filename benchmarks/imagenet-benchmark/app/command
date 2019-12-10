@@ -1,0 +1,4 @@
+time python3 main.py -a alexnet -b 8 --epochs 1 --lr 0.01 . | tee xxx_result/a.log
+python3 infer.py . -b 1 -e --resume checkpoint.pth.tar
+python3 infer.py . --pretrained -b 1 -e
+
