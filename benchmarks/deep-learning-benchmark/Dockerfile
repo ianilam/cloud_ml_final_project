@@ -20,5 +20,6 @@ WORKDIR /app
 
 # Add the code as the last Docker layer because it changes the most
 ADD ./app  /app
+RUN mkdir logs
 # Run the service
-CMD [ "python3", "benchmark.py" ]
+CMD python3 benchmark.py > /logs/perf.log
