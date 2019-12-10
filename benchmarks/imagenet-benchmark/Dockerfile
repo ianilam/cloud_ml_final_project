@@ -22,5 +22,5 @@ WORKDIR /app
 # Add the code as the last Docker layer because it changes the most
 ADD ./app  /app
 # Run the service
-CMD [ "python3", "main.py", "-a", "alexnet", "-b", "8", "--epochs", "1", "--lr", "0.01", "." , "--perf-num-show", "30", "--perf-sort", "cumulative", ">", "perf.log"] 
+CMD [ "python3", "main.py", "-a", "alexnet", "-b", "8", "--epochs", "1", "--lr", "0.01", "." , "--perf-num-show", "30", "--perf-sort", "cumulative" ]
 #CMD [ "python3", "main.py", "-a alexnet", "-b 8", "--epochs 1", "--lr 0.01", ".", "--perf-num-show 30", "--perf-sort cumulative" ] 
