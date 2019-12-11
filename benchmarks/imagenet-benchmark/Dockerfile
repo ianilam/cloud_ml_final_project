@@ -23,4 +23,4 @@ WORKDIR /app
 ADD ./app  /app
 RUN mkdir logs
 # Run the service
-CMD python3 main.py -a alexnet -b 8 --epochs 1 --lr 0.01 . > /logs/perf.log
+CMD python3 main.py -a alexnet -b 8 --epochs 1 --lr 0.01 -j 0 . > /logs/perf.log
