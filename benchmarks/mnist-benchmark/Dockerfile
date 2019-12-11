@@ -1,6 +1,9 @@
-FROM python:3.6
+FROM ubuntu:18.04
+RUN apt-get update && apt-get install -y python3-dev python3-pip
+RUN pip3 install --upgrade pip
+RUN pip3 install torch --no-cache-dir
+RUN pip3 install torchvision --no-cache-dir
 WORKDIR /app
 COPY mnist /app
-RUN pip install -r requirements.txt --no-cache-dir
-RUN mkdir /logs
-CMD [ "python", "-m", "cProfile", "-o", "/logs/mnist_profile", "main.py", "--epochs", "1" ]
+RUN mkdir logs
+CMD python3 -m cProfile -o /logs/cprofile_log main.py --epochs 1 > /logs/train_log
