@@ -1,5 +1,5 @@
 If you want to try without docker, use:
 
 ```
-python3 benchmark.py
+python3 app/benchmark.py
 ```
