@@ -1,0 +1,9 @@
+# Start with a Ubuntu image to keep the image consistent with host OS
+FROM ubuntu:bionic
+
+# Document who is responsible for this image
+LABEL maintainer="Nisarg Thakkar 'nmt324@nyu.edu'"
+
+RUN apt-get -y update && apt-get -y install time
+
+CMD $(time sh -c "dd if=/dev/zero of=./test_write.tmp bs=4k count=1000000 && sync") && $(rm -f ./test_write.tmp) && $(dd if=/dev/zero of=./test_read.tmp bs=4k count=251889) && $(time sh -c "dd if=./test_read.tmp of=/dev/null bs=4k") && $(rm -f ./test_read.tmp)
