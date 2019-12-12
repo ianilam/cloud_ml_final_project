@@ -33,7 +33,7 @@ function system_dd() {
 }
 
 function system_bonnie() {
-    bonnie++ -d /tmp -r 2048 -u ubuntu
+    bonnie++ -d /tmp -r 1024 -u ubuntu -s 2048
 }
 
 function system_mnist() {
@@ -108,6 +108,7 @@ function chroot_setup() {
     # forcecpchroot ../mnist-benchmark/mnist /usr/mnist
 
     # sudo mkdir -p ~/cmlroot/usr/mnist/logs
+    sudo mkdir -p ~/cmlroot/tmp
 
     sudo mkdir -p ~/cmlroot/dev
     sudo mount -v --bind /dev ~/cmlroot/dev
@@ -140,7 +141,7 @@ function chroot_dd() {
 }
 
 function chroot_bonnie() {
-    sudo chroot ~/cmlroot bonnie++ -d /tmp -r 2048 -u ubuntu
+    sudo chroot ~/cmlroot bonnie++ -d /tmp -r 1024 -u ubuntu -s 2048
 }
 
 # function chroot_mnist() {
@@ -210,7 +211,7 @@ function lxc_dd() {
 }
 
 function lxc_bonnie() {
-    sudo lxc-attach -n cloudml -- bonnie++ -d /tmp -r 2048 -u ubuntu
+    sudo lxc-attach -n cloudml -- bonnie++ -d /tmp -r 1024 -u ubuntu -s 2048
 }
 
 function lxc_mnist() {
@@ -335,7 +336,7 @@ function rkt_cleanup() {
 
 system_setup
 
-while ! [ -z $1 ]
+while ! [ -z "$1" ]
 do
     if ! [ "$1" = "all" ]; then
         $1
