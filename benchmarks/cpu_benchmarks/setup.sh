@@ -177,7 +177,7 @@ function lxc_setup() {
     sleep 2
     sudo lxc-attach -n cloudml -- apt-get -y update
     
-    sudo lxc-attach -n cloudml -- apt -y install sysbench expect bonnie++ time python3 python3-pip
+    sudo lxc-attach -n cloudml -- apt-get -y install sysbench expect bonnie++ time python3 python3-pip
 
     mkdir -p scripts
     cp *.sh scripts
@@ -216,7 +216,7 @@ function lxc_bonnie() {
 
 function lxc_mnist() {
     sudo lxc-attach -n cloudml -- mkdir -p /home/ubuntu/mnist/logs
-    sudo lxc-attach -n cloudml -- time python3 -m cProfile -o /home/ubuntu/mnist/logs/cprofile_log_mnist /home/ubuntu/mnist/main.py --epochs 1
+    time sudo lxc-attach -n cloudml -- python3 -m cProfile -o /home/ubuntu/mnist/logs/cprofile_log_mnist /home/ubuntu/mnist/main.py --epochs 1
     sudo lxc-attach -n cloudml -- rm -rf data
 }
 
@@ -233,7 +233,7 @@ function docker_setup() {
     docker_cleanup
     sudo apt-get update
     sudo apt-get -y remove docker docker-engine docker.io
-    sudo apt -y install docker.io
+    sudo apt-get -y install docker.io
     sudo systemctl start docker
     sudo systemctl enable docker
 }
