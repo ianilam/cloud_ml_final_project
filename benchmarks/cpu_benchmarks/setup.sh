@@ -334,43 +334,55 @@ function rkt_cleanup() {
 
 
 system_setup
-system_sysbench
-system_ycruncher
-system_dd
-system_bonnie
-system_mnist
-# system_imagenet
 
-chroot_setup
-chroot_sysbench
-# chroot_ycruncher
-chroot_dd
-chroot_bonnie
-# chroot_mnist
-chroot_cleanup
+while ! [ -z $1 ]
+do
+    if ! [ "$1" = "all" ]; then
+        $1
+    fi
+    shift
+done
 
-lxc_setup
-lxc_sysbench
-lxc_ycruncher
-lxc_dd
-lxc_bonnie
-lxc_cleanup
+if [ "$1" = "all" ]; then
+    system_sysbench
+    system_ycruncher
+    system_dd
+    system_bonnie
+    system_mnist
+    # system_imagenet
 
-docker_setup
-docker_sysbench
-docker_ycruncher
-docker_dd
-docker_bonnie
-docker_mnist
-docker_cleanup
+    chroot_setup
+    chroot_sysbench
+    # chroot_ycruncher
+    chroot_dd
+    chroot_bonnie
+    # chroot_mnist
+    chroot_cleanup
 
-rkt_setup
-rkt_sysbench
-rkt_ycruncher
-rkt_dd
-rkt_bonnie
-rkt_mnist
-rkt_cleanup
+    lxc_setup
+    lxc_sysbench
+    lxc_ycruncher
+    lxc_dd
+    lxc_bonnie
+    lxc_mnist
+    lxc_cleanup
+
+    docker_setup
+    docker_sysbench
+    docker_ycruncher
+    docker_dd
+    docker_bonnie
+    docker_mnist
+    docker_cleanup
+
+    rkt_setup
+    rkt_sysbench
+    rkt_ycruncher
+    rkt_dd
+    rkt_bonnie
+    rkt_mnist
+    rkt_cleanup
+fi
 
 system_cleanup
 
