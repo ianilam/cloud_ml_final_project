@@ -191,12 +191,12 @@ function lxc_setup() {
 }
 
 function lxc_sysbench() {
-    sudo lxc-attach -n cloudml -- ./sysbench_tests.sh
+    sudo lxc-attach -n cloudml -- /home/ubuntu/sysbench_tests.sh
     # sudo lxc-attach -n cloudml -- rm -rf './test_file*'
 }
 
 function lxc_ycruncher() {
-    sudo lxc-attach -n cloudml -- ./run_y-cruncher.sh /home/ubuntu
+    sudo lxc-attach -n cloudml -- /home/ubuntu/run_y-cruncher.sh /home/ubuntu
     # sudo lxc-attach -n cloudml -- rm -rf 'Pi*'
 }
 
