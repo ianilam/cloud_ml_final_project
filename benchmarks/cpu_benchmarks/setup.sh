@@ -339,6 +339,7 @@ system_ycruncher
 system_dd
 system_bonnie
 system_mnist
+# system_imagenet
 
 chroot_setup
 chroot_sysbench
