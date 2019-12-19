@@ -2,7 +2,8 @@ If running the mnist-benchmark test on Prince, use the following commond:
 
 `time python -m cProfile -o cprofile_log1 main.py --epochs 1`
 
-This program uses cProfile and outputs stats into "/logs".
+
+This benchmark experiment also uses cProfile and outputs stats into "/logs".
 
 To look at the stats:
 ```
