@@ -1,8 +1,5 @@
-For each benchmark:
+In this project, we uses 6 cpu benchmarks and 3 machine learning benchmarks.
 
-To get the output log file, mount the logs using "docker run -v" as following:
-```bash
-cd <benchmark_dir>/  
-docker build -t <your_tag> .  
-docker run -v <your_log_path>:/logs <your_tag>
-```
+To run 6 cpu benmarks including speed and memory, see ```./cpu_benchmark/```  
+
+To run machine learning benchmarks, see ```./mnist/```, ```./imagenet_benchmark/```, and ```./deep_learning benchmark/```
