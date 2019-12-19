@@ -1,7 +1,10 @@
-uses cProfile and outputs stats into "/logs"
+If running the mnist-benchmark test on Prince, use the following commond:
 
-to look at the stats
+`time python -m cProfile -o cprofile_log1 main.py --epochs 1`
 
+This program uses cProfile and outputs stats into "/logs".
+
+To look at the stats:
 ```
 import pstats
 p = pstats.Stats([outputfile_name])
